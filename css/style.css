@@ -150,6 +150,7 @@ body{
 	padding-bottom: 5px;
 	top: 85%;
 	left: 7.5%;
+	box-shadow: 1px 1px 1px 1px white inset;
 
 }
 
@@ -164,6 +165,7 @@ body{
 	padding-bottom: 5px;
 	top: 85%;
 	left: 37.5%;
+	box-shadow: 1px 1px 1px 1px white inset;
 }
 
 #stand{
@@ -177,6 +179,7 @@ body{
 	padding-bottom: 5px;
 	top: 85%;
 	left: 67.5%;
+	box-shadow: 1px 1px 1px 1px white inset;
 }
 
 #outcome{
