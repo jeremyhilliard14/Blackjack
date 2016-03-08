@@ -19,6 +19,7 @@ body{
 	color: white;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	box-shadow: 1px 1px 1px black;
 }
 
 #dealer-total{
@@ -42,27 +43,58 @@ body{
 	margin-top: 5px;
 }
 
+#d8{
+	background-color: white;
+	font-size: 20px;
+	width: 5%;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+}
+
+#c4{
+	background-color: white;
+	font-size: 20px;
+	width: 5%;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+}
+
+#s6{
+	background-color: white;
+	font-size: 20px;
+	width: 5%;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+}
+
 .dealer-cards{
 	position: absolute;
 	width: 12%;
 	height: 30%;
 	background-color: gray;
 	border-radius: 5px;
+	border: 2px dashed black;
 }
 
 .dealer-cards.one{
 	top: 10%;
 	left: 20%;
+	background-color: white;
 }
 
 .dealer-cards.two{
 	top: 10%;
 	left: 33%;
+	background-color: white;
 }
 
 .dealer-cards.three{
 	top: 10%;
 	left: 46%;
+	background-color: white;
 }
 
 .dealer-cards.four{
@@ -107,16 +139,37 @@ body{
 	height: 30%;
 	background-color: gray;
 	border-radius: 5px;
+	border: 2px dashed black;
+}
+
+#c6{
+	background-color: white;
+	font-size: 20px;
+	width: 5%;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+}
+
+#c13{
+	background-color: white;
+	font-size: 20px;
+	width: 5%;
+	position: absolute;
+	top: 15%;
+	left: 22%;
 }
 
 .player-cards.one{
 	top: 45%;
 	left: 20%;
+	background-color: white;
 }
 
 .player-cards.two{
 	top: 45%;
 	left: 33%;
+	background-color: white;
 }
 
 .player-cards.three{
