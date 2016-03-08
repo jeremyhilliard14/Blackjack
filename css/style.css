@@ -1,0 +1,189 @@
+body{
+	max-width: 960px;
+	margin: auto;
+}
+
+#table{
+	background-color: green;
+	height: 600px;
+	border-radius: 20px;
+	position: relative;
+}
+
+#winnings{
+	background-color: red;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 40%;
+	margin-right: 40%;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#dealer-total{
+	background-color: green;
+	color: white;
+	font-size: 25px;
+	overflow: hidden;
+	text-align: center;
+	max-width: 15%;
+	margin-left: 20px;
+	margin-top: 60px;
+}
+
+#dealer-qty{
+	font-size: 25px;
+	background-color: green;
+	text-align: center;
+	color: white;
+	max-width: 7.5%;
+	margin-left: 57px;
+	margin-top: 5px;
+}
+
+.dealer-cards{
+	position: absolute;
+	width: 12%;
+	height: 30%;
+	background-color: gray;
+	border-radius: 5px;
+}
+
+.dealer-cards.one{
+	top: 10%;
+	left: 20%;
+}
+
+.dealer-cards.two{
+	top: 10%;
+	left: 33%;
+}
+
+.dealer-cards.three{
+	top: 10%;
+	left: 46%;
+}
+
+.dealer-cards.four{
+	top: 10%;
+	left: 59%;
+}
+
+.dealer-cards.five{
+	top: 10%;
+	left: 72%;
+}
+
+.dealer-cards.six{
+	top: 10%;
+	left: 85%;
+}
+
+#player-total{
+	background-color: green;
+	color: white;
+	font-size: 25px;
+	overflow: hidden;
+	text-align: center;
+	max-width: 15%;
+	margin-left: 20px;
+	margin-top: 150px;
+}
+
+#player-qty{
+	font-size: 25px;
+	background-color: green;
+	text-align: center;
+	color: white;
+	max-width: 7.5%;
+	margin-left: 57px;
+	margin-top: 5px;
+}
+
+.player-cards{
+	position: absolute;
+	width: 12%;
+	height: 30%;
+	background-color: gray;
+	border-radius: 5px;
+}
+
+.player-cards.one{
+	top: 45%;
+	left: 20%;
+}
+
+.player-cards.two{
+	top: 45%;
+	left: 33%;
+}
+
+.player-cards.three{
+	top: 45%;
+	left: 46%;
+}
+
+.player-cards.four{
+	top: 45%;
+	left: 59%;
+}
+
+.player-cards.five{
+	top: 45%;
+	left: 72%;
+}
+
+.player-cards.six{
+	top: 45%;
+	left: 85%;
+}
+
+#deal{
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	width: 25%;
+	position: absolute;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	top: 85%;
+	left: 7.5%;
+
+}
+
+#hit{
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	width: 25%;
+	position: absolute;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	top: 85%;
+	left: 37.5%;
+}
+
+#stand{
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	width: 25%;
+	position: absolute;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	top: 85%;
+	left: 67.5%;
+}
+
+#outcome{
+	font-size: 20px;
+	background-color: green;
+	color: white;
+	position: absolute;
+	bottom: 3%;
+	left: 40%;
+}
