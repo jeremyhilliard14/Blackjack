@@ -100,16 +100,19 @@ body{
 .dealer-cards.four{
 	top: 10%;
 	left: 59%;
+	display: block;
 }
 
 .dealer-cards.five{
 	top: 10%;
 	left: 72%;
+	display: block;
 }
 
 .dealer-cards.six{
 	top: 10%;
 	left: 85%;
+	display: block;
 }
 
 #player-total{
@@ -242,4 +245,30 @@ body{
 	position: absolute;
 	bottom: 3%;
 	left: 40%;
+}
+
+@media (max-width: 768px) 
+{
+    .dealer-cards.four, .dealer-cards.five, .dealer-cards.six
+    {
+        display: none;
+    }
+    .player-cards.four, .player-cards.five, .player-cards.six
+    {
+    	display: none;
+    }
+	.dealer-cards.one, .dealer-cards.two, .dealer-cards.three
+	{
+		width: 15%;
+		margin-right: 3px;
+		margin-left: 15px;
+	}
+	.player-cards.one, .player-cards.two, .player-cards.three
+	{
+		width: 15%;
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+	
+
 }

@@ -1,0 +1,24 @@
+.container{
+	max-width: 1200px;
+	margin: auto;
+	background-color: green;
+	border-radius: 5px;
+	height: 600px;
+}
+
+#winnings{
+	background-color: red;
+	color: white;
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+#dealer-total{
+	float: left;
+	background-color: green;
+	color: white;
+}
+#dealer-qty{
+	float: left;
+	margin-left: 10px;
+}
