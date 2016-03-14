@@ -1,9 +1,24 @@
 // Deal needs to call shuffle and assign the deck.
 // Set u a players starting plan
-// Place the cards in the correct spot
+// Place the cards in the correct 
+
+
+// Update styling of gameboard.
+// What if the player gets blackjack on the deal?
+// how can a card be an 11, 12, 13?
+// Can an ace  = 1 or 11?
+// The player can keep hitting and standing after the game is over.
+// There is no win counter
+// There is no wagering system.
+// There is no deck to draw from
+// the red card arent red
+// there is no delay on the cards displaying(its instant)
+// you can see both dealer card on deal
 
 var theDeck =[];
 var placeInDeck = 0;
+var playerTotalCards = 2;
+var dealerTotalCards = 2;
 
 $(document).ready(function(){
 	$('button').click(function(){
@@ -14,6 +29,8 @@ $(document).ready(function(){
 			hit();
 		}else if(clickedButton == 'stand-button'){
 			stand();
+		}else if(clickedButton == 'reset-button'){
+			reset();
 		}
 	});
 });
@@ -43,15 +60,23 @@ function placeCard(card, who, slot){
 
 function calculateTotal(hand, who) {
 	var total = 0;
+	var cardValue = 0;
 	for(i=0; i<hand.length; i++){
 		//Purposely NOT fixing 11, 12, or 13, or 1=11;
-		var cardValue = Number(hand[i].slice(0, -1));
+		cardValue = Number(hand[i].slice(0, -1));
 		total += cardValue;
 	}
 	//update html
 	var idToGet = '.' + who + '-total';
 	$(idToGet).html(total);
+
 	console.log(total);
+
+	if(total > 21){
+		bust(who);
+	}
+
+
 }
 
 
@@ -93,11 +118,113 @@ function shuffleDeck(){
 	
 }	
 
+function hit(){
+	var slot = '';
+	if(playerTotalCards == 2){slot = "three";}
+	else if(playerTotalCards == 3){slot = "four";}
+	else if(playerTotalCards == 4){slot = "five";}
+	else if(playerTotalCards == 5){slot = "six";}
+
+	placeCard(theDeck[placeInDeck], 'player', slot);
+	playerHand.push(theDeck[placeInDeck]);
+	placeInDeck++;
+	playerTotalCards++;
+	calculateTotal(playerHand, 'player');
+}
 
 
+function stand(){
+	//What happens to player?  Nothing
+	var dealerTotal = $('.dealer-total').html();
+	//same as calculateTotal(dealerHand, 'dealer');
+	while(dealerTotal < 17){
+		if(dealerTotalCards == 2){ slot = "three";}
+		else if(dealerTotalCards == 3){ slot = "four";}
+		else if(dealerTotalCards == 4){ slot = "five";}
+		else if(dealerTotalCards == 5){ slot = "six";}
+		placeCard(theDeck[placeInDeck], 'dealer', slot);
+		dealerHand.push(theDeck[placeInDeck]);
+		dealerTotalCards++;
+		placeInDeck++;
+		calculateTotal(dealerHand, 'dealer');
+		dealerTotal = $('dealer-total').html();
+	}
+		//We now know the dealer has at least 17.  Check to see who has a higher total.
+		checkWin();
+}
+
+function checkWin(){
+	var playerHas = Number($('.player-total').html());
+	var dealerHas = Number($('.dealer-total').html());
+	if(dealerHas > 21){
+		//The dealer has busted
+		bust('dealer');
+	}else{
+		//Niether player have busted.
+		if(playerHas > dealerHas){
+			//Player won
+			$('#message').html("You have beaten the dealer!");
+			$('#hit-button').attr('disabled', 'disabled');
+			$('#deal-button').attr('disabled', 'disabled');
+			$('#stand-button').attr('disabled', 'disabled');
+		}else if(dealerHas > playerHas){
+			//Dealer won
+			$('#message').html("Sorry, the dealer has beaten you.");
+			$('#hit-button').attr('disabled', 'disabled');
+			$('#deal-button').attr('disabled', 'disabled');
+			$('#stand-button').attr('disabled', 'disabled');
+		}else if(playerHas == 21){
+			$('#message').html("Blackjack!");
+			$('#hit-button').attr('disabled', 'disabled');
+			$('#deal-button').attr('disabled', 'disabled');
+			$('#stand-button').attr('disabled', 'disabled');
+		}else if(playerHas = 21){
+			$('#message').html("Blackjack!");
+			$('#hit-button').attr('disabled', 'disabled');
+			$('#deal-button').attr('disabled', 'disabled');
+			$('#stand-button').attr('disabled', 'disabled');
+		}else{
+			//tie
+			$('#message').html("Push!");
+			$('#hit-button').attr('disabled', 'disabled');
+			$('#deal-button').attr('disabled', 'disabled');
+			$('#stand-button').attr('disabled', 'disabled');
+
+		}
+	}
+}
+
+function bust(who){
+	if(who == 'player'){
+		$('#message').html("You have busted!");
+		$('#hit-button').attr('disabled', 'disabled');
+		$('#deal-button').attr('disabled', 'disabled');
+		$('#stand-button').attr('disabled', 'disabled');
+	}else{
+		$('#message').html("The dealer has busted.  You Win!");
+		$('#hit-button').attr('disabled', 'disabled');
+		$('#deal-button').attr('disabled', 'disabled');
+		$('#stand-button').attr('disabled', 'disabled');
+	}
+}
 
 
+function reset(){
+	$('.card').addClass("empty");
+	Number($('.player-total').html(0));
+	Number($('.dealer-total').html(0));
+	$('#message').html("");
+	$('.card').html("");
+	$('#stand-button').removeAttr('disabled');
+	$('#hit-button').removeAttr('disabled');
+	$('#deal-button').removeAttr('disabled');
+	playerTotalCards = 2;
+	dealerTotalCards = 2;
+	
+}
 
-
+// function blackjack(){
+// 	if(playerHas )
+// }
 
 
