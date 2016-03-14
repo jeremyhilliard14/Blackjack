@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+
+<!-- 1.  Create an element for the table and turn it green with a border.
+2.  Create an element for the dealer's hand and the player's hand.
+3.  Create and element for each card (MAX 6) inside both dealer and player.
+4.  Create an element for each dealer and player totals
+5.  Assign classes to each card so they can be styled and targeted.
+6.  Assign class of "empty" to each card on load and then style.-->
+
+
 <html>
 <head>
 	<title>DigitalCrafts - week 3 - Blackjack</title>
@@ -8,34 +18,60 @@
 	
 </head>
 	<body>
-		<div class="container table">
+		<div class="container">
 			<div class="row">
-				<div class="col-lg-offset-5 col-md-2 col-xs-1 text-center" id="winnings">Wins: 0</div>
-			</div>
-		</div>	
+				<div class="the-table col-sm-8 col-sm-offset-2">
+					<div class="row">
+						<div class="dealer-hand-wrapper col-sm-12">
+							<div class="dealer-total-wrapper col-sm-2">Dealer Total<span class="dealer-total">0</span>
+							</div>
+							<!-- <div class="col-sm-10"> -->
+								<div id="dealer-card-one" class="card empty col-sm-2">-</div>
+								<div id="dealer-card-two" class="card empty col-sm-2">-</div>
+								<div id="dealer-card-three" class="card empty col-sm-2">-</div>
+								<div id="dealer-card-four" class="card empty col-sm-2">-</div>
+								<div id="dealer-card-five" class="card empty col-sm-2">-</div>
+								<div id="dealer-card-six" class="card empty col-sm-2">-</div>
+							<!-- </div> -->
+						</div>
+					</div>
 
-		<div class="row">
-			<div class="col-lg-1 col-md-1 col-xs-1" id="dealer-total">Dealer Total</div>
-			<div class="col-lg-1 col-md-1 col-xs-1" id="dealer-qty">18</div>
-			<div class=".col-md-12 text-center">
-				<div id="">
+					<div class="row">
+						<div class="player-hand-wrapper col-sm-12">
+							<div class="player-total-wrapper col-sm-2">Player Total<span class="player-total">0</span>
+							</div>
+							<div id="player-card-one" class="card empty col-sm-2">-</div>
+							<div id="player-card-two" class="card empty col-sm-2">-</div>
+							<div id="player-card-three" class="card empty col-sm-2">-</div>
+							<div id="player-card-four" class="card empty col-sm-2">-</div>
+							<div id="player-card-five" class="card empty col-sm-2">-</div>
+							<div id="player-card-six" class="card empty col-sm-2">-</div>
+						</div>
+					</div>
 				</div>
+
+			</div>
+			
+
+		
+		
+
+
+
+
+
+
+
+
+
+
 		</div>
 
-
-
-
-
-
-
-
-
-
-	</div>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script type="text/javascript" href="js/script.js"></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
 
 </body>
 </html>
