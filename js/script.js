@@ -83,6 +83,16 @@ function calculateTotal(hand, who) {
 	for(i=0; i<hand.length; i++){
 		//Purposely NOT fixing 11, 12, or 13, or 1=11;
 		cardValue = Number(hand[i].slice(0, -1));
+		if ((cardValue == 11) || (cardValue == 12) || (cardValue == 13)){
+			cardValue = 10;
+		}
+		if(cardValue == 1){
+			if (total + 11 <= 21){
+				cardValue = 11;
+			}else{
+				cardValue = 1;
+			}
+		}
 		total += cardValue;
 	}
 	//update html
@@ -120,11 +130,12 @@ function shuffleDeck(){
 		}else if(s === 4){
 			suit = 'c';
 		}
+
 		for (i=1; i<=13; i++){
 			theDeck.push(i+suit);
 		}
 	}
-	// console.log(theDeck);
+	//console.log(theDeck);
 
 	var numberOfTimesToShuffle = 500;
 	for(i = 1; i<numberOfTimesToShuffle; i++){
