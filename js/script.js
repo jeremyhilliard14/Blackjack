@@ -44,13 +44,26 @@ function deal(){
 	//dealerHand = [ theDeck[1], theDeck[3]];
 	dealerHand = [ theDeck[1]];
 	placeInDeck = 3;
-	placeCard(playerHand[0], 'player', 'one');
-	placeCard(dealerHand[0], 'dealer', 'one');
-	placeCard(playerHand[1], 'player', 'two');
+	//setInterval(function(){
+		placeCard(playerHand[0], 'player', 'one');
+	//}, 500);
+	//setInterval(function(){
+		placeCard(dealerHand[0], 'dealer', 'one');
+	//}, 1000);
+	//setInterval(function(){
+		placeCard(playerHand[1], 'player', 'two');
+	//}, 1500);
 	//placeCard(dealerHand[1], 'dealer', 'two');
-	calculateTotal(playerHand, 'player');
-	calculateTotal(dealerHand, 'dealer');
-
+	//setInterval(function(){
+		calculateTotal(playerHand, 'player');
+	//}, 1750);
+	//setInterval(function(){
+		calculateTotal(dealerHand, 'dealer');
+	//}, 1750);
+	var playerHas = Number($('.player-total').html());
+	if(playerHas == 21){
+		$('#message').html("Blackjack!");
+	} 
 
 }
 
@@ -133,11 +146,15 @@ function hit(){
 	else if(playerTotalCards == 4){slot = "five";}
 	else if(playerTotalCards == 5){slot = "six";}
 
-	placeCard(theDeck[placeInDeck], 'player', slot);
+	//setInterval(function(){
+		placeCard(theDeck[placeInDeck], 'player', slot);
+	//}, 500);
 	playerHand.push(theDeck[placeInDeck]);
 	placeInDeck++;
 	playerTotalCards++;
-	calculateTotal(playerHand, 'player');
+	//setInterval(function(){
+		calculateTotal(playerHand, 'player');
+	//}, 750);
 }
 
 
@@ -152,11 +169,15 @@ function stand(){
 		else if(dealerTotalCards == 3){ slot = "four";}
 		else if(dealerTotalCards == 4){ slot = "five";}
 		else if(dealerTotalCards == 5){ slot = "six";}
-		placeCard(theDeck[placeInDeck], 'dealer', slot);
+		// setInterval(function(){
+			placeCard(theDeck[placeInDeck], 'dealer', slot);
+		//}, 500);
 		dealerHand.push(theDeck[placeInDeck]);
 		dealerTotalCards++;
 		placeInDeck++;
-		calculateTotal(dealerHand, 'dealer');
+		//setInterval(function(){
+			calculateTotal(dealerHand, 'dealer');
+		//}, 750);
 		dealerTotal = $('dealer-total').html();
 		
 	}
@@ -243,8 +264,14 @@ function totalWins(){
 	var dealerHas = Number($('.dealer-total').html());
 	if(playerHas > dealerHas){
 		wins++;
+		$('.player-wins').html(wins);
+	}else if(dealerHas > 21){
+		wins++;
+		$('.player-wins').html(wins);
+	}else if(playerHas == 21){
+		wins++;
+		$('.player-wins').html(wins);
 	}
-	$('.player-wins').html(wins);
 }
 
 // function blackjack(){
