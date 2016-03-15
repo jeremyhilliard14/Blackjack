@@ -18,19 +18,22 @@
 var theDeck =[];
 var placeInDeck = 0;
 var playerTotalCards = 2;
-var dealerTotalCards = 2;
+var dealerTotalCards = 1;
+var wins = 0;
+//var slowDeal = setInterval(deal, 5000);
 
 $(document).ready(function(){
 	$('button').click(function(){
 		var clickedButton = ($(this).attr('id'));
 		if(clickedButton == 'deal-button'){
 			deal();
+			//reset();
 		}else if(clickedButton == 'hit-button'){
 			hit();
 		}else if(clickedButton == 'stand-button'){
 			stand();
-		}else if(clickedButton == 'reset-button'){
-			reset();
+		}else if(clickedButton == 'new-game-button'){
+			newGame();
 		}
 	});
 });
@@ -39,7 +42,7 @@ function deal(){
 	shuffleDeck();
 	playerHand = [ theDeck[0], theDeck[2]];
 	//dealerHand = [ theDeck[1], theDeck[3]];
-	dealerHand = [ theDeck[1]]
+	dealerHand = [ theDeck[1]];
 	placeInDeck = 3;
 	placeCard(playerHand[0], 'player', 'one');
 	placeCard(dealerHand[0], 'dealer', 'one');
@@ -47,6 +50,8 @@ function deal(){
 	//placeCard(dealerHand[1], 'dealer', 'two');
 	calculateTotal(playerHand, 'player');
 	calculateTotal(dealerHand, 'dealer');
+
+
 }
 
 
@@ -71,7 +76,7 @@ function calculateTotal(hand, who) {
 	var idToGet = '.' + who + '-total';
 	$(idToGet).html(total);
 
-	console.log(total);
+	//console.log(total);
 
 	if(total > 21){
 		bust(who);
@@ -88,7 +93,7 @@ function shuffleDeck(){
 		// -4 suits
 		// 	- hart, spades, diamond, clubs
 		// 
-
+	theDeck = [];
 	for(s=1; s<=4; s++){	
 
 		var suit = "";
@@ -137,6 +142,7 @@ function hit(){
 
 
 function stand(){
+	var slot = '';
 	//What happens to player?  Nothing
 	var dealerTotal = $('.dealer-total').html();
 	//same as calculateTotal(dealerHand, 'dealer');
@@ -152,10 +158,12 @@ function stand(){
 		placeInDeck++;
 		calculateTotal(dealerHand, 'dealer');
 		dealerTotal = $('dealer-total').html();
+		
 	}
 		//We now know the dealer has at least 17.  Check to see who has a higher total.
 		checkWin();
 }
+
 
 function checkWin(){
 	var playerHas = Number($('.player-total').html());
@@ -178,16 +186,16 @@ function checkWin(){
 			$('#hit-button').attr('disabled', 'disabled');
 			$('#deal-button').attr('disabled', 'disabled');
 			$('#stand-button').attr('disabled', 'disabled');
-		}else if(playerHas = 21){
-			$('#message').html("Blackjack!");
-			$('#hit-button').attr('disabled', 'disabled');
-			$('#deal-button').attr('disabled', 'disabled');
-			$('#stand-button').attr('disabled', 'disabled');
-		}else if(dealerHas = 21){
-			$('#message').html("Blackjack!");
-			$('#hit-button').attr('disabled', 'disabled');
-			$('#deal-button').attr('disabled', 'disabled');
-			$('#stand-button').attr('disabled', 'disabled');
+		// }else if(playerHas = 21){
+		// 	$('#message').html("Blackjack!");
+		// 	$('#hit-button').attr('disabled', 'disabled');
+		// 	$('#deal-button').attr('disabled', 'disabled');
+		// 	$('#stand-button').attr('disabled', 'disabled');
+		// }else if(dealerHas = 21){
+		// 	$('#message').html("Blackjack!");
+		// 	$('#hit-button').attr('disabled', 'disabled');
+		// 	$('#deal-button').attr('disabled', 'disabled');
+		// 	$('#stand-button').attr('disabled', 'disabled');
 		}else{
 			//tie
 			$('#message').html("Push!");
@@ -214,7 +222,7 @@ function bust(who){
 }
 
 
-function reset(){
+function newGame(){
 	$('.card').addClass("empty");
 	Number($('.player-total').html(0));
 	Number($('.dealer-total').html(0));
@@ -224,18 +232,17 @@ function reset(){
 	$('#hit-button').removeAttr('disabled');
 	$('#deal-button').removeAttr('disabled');
 	playerTotalCards = 2;
-	dealerTotalCards = 2;
+	dealerTotalCards = 1;
 	
 }
 
-function totalWins(hand, who){
-	var wins = 0;
-	var totalWins = 1;
+function totalWins(){
+	
+	// var totalWins = 0;
 	var playerHas = Number($('.player-total').html());
 	var dealerHas = Number($('.dealer-total').html());
 	if(playerHas > dealerHas){
-		wins += totalWins;
-		totalWins++;
+		wins++;
 	}
 	$('.player-wins').html(wins);
 }
