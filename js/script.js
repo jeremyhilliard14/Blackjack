@@ -72,7 +72,6 @@ function deal(){
 function placeCard(card, who, slot){
 	var currId = '#' + who + '-card-' + slot;
 	$(currId).removeClass('empty');
-	if(card[1] == 'r'){}
 	$(currId).html(card);
 	
 }
@@ -135,6 +134,16 @@ function shuffleDeck(){
 			theDeck.push(i+suit);
 		}
 	}
+	// if(i=1){
+	// 	i = 'A';
+	// }else if (i=11){
+	// 	i = 'J';
+	// }else if (i = 12){
+	// 	i = 'Q';
+	// }else if(i = 13){
+	// 	i = 'K';
+	// }
+	
 	//console.log(theDeck);
 
 	var numberOfTimesToShuffle = 500;
